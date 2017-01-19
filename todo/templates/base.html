@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+
+  <title>TODO</title>
+  <link href="/static/dist/styles.css" rel="stylesheet">
+  {% block headscripting %}{% endblock %}
+</head>
+<body {% block ng_app %}{% endblock %}>
+  <div class="container" id="main-block">
+    {% block page_header %}{% endblock %}
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  {% block scripting %}{% endblock %}
+</body>
+</html>
