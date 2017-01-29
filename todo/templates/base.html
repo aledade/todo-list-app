@@ -9,16 +9,14 @@
   {% assets "base_css" %}
     <link href="{{ ASSET_URL }}" rel="stylesheet">
   {% endassets %}
-  <script src="/static/bower_components/angular/angular.js"></script>
+  {% assets "main_js" %}
+    <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
 </head>
-<body {% block ng_app %}{% endblock %}>
+<body ng-app="todo">
   <div class="container" id="main-block">
     {% block content %}
     {% endblock %}
   </div>
-
-  {% assets "main_js" %}
-    <script src="{{ ASSET_URL }}"></script>
-  {% endassets %}
 </body>
 </html>

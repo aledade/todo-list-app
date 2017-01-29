@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to Aledade's code test!</h1>
+<p class="lead">
+  The purpose of this exercise is to test your ability to quickly and iteratively build features in a new code base.
+</p>
+
+<p>
+  Despite its contrived simplicity, this application uses the same frameworks we utilize in our production environment.
+</p>
+
+<h3>Instructions</h3>
+<p>Within the time allotted, your task is to:
+<ol>
+  <li>Execute as many feature stories as possible</li>
+  <li>Commit your work as you accomplish tasks</li>
+  <li><a href="https://git-scm.com/blog/2010/03/10/bundles.html">Bundle your code</a>
+    (<code>git bundle create /tmp/todo_work.bundle master</code>),
+    then send it to <a href="mailto:dcain@aledade.com">David Cain</a>.
+  </li>
+</ol>
+
+<h3>The application</h3>
+<p>You will be building a simple "TODO" application.
+It already includes a number of tasks, which are themselves the stories you must work on.
+<p>
+<p>
+You can view stories within the application itself, or as Markdown files in <code>starting_tasks/</code>.
+</p>
+
+<a class="btn btn-primary" role="button" href="/tasks">Get started!</a>
+
+{% endblock  %}

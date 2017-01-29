@@ -1,0 +1,4 @@
+.ui-sortable .list-group-item,
+.ui-sortable label {
+  cursor: move;
+}

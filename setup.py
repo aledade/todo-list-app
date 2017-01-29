@@ -10,6 +10,7 @@ setup(
         'flask-assets ~= 0.12',
         'alembic',
         'sqlalchemy ~= 1.0',
+        'markdown2',
     ],
     setup_requires=[
         'pytest-runner',

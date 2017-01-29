@@ -5,6 +5,11 @@
   ],
   "description": "A simple Angular-based 'TODO' application",
   "dependencies": {
-    "angular": ">=1.5.0"
+    "angular": "1.5.x",
+    "angular-sanitize": "1.5.x",
+    "angular-animate": "1.5.x",
+    "angular-ui-sortable": "0.16.x",
+    "bootstrap": "3.x",
+    "angular-bootstrap": "2.5.x"
   }
 }

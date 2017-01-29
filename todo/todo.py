@@ -1,7 +1,7 @@
 from sqlite3 import dbapi2 as sqlite3
 import os
 
-from flask import Flask, g, render_template
+from flask import Flask, g, json, render_template
 from flask_assets import Environment, Bundle
 
 
@@ -41,10 +41,27 @@ def close_db(error):
 # set up asset management
 assets = Environment(app)
 a_s = {
-    'base_css': Bundle('css/base.css', output='gen/base.css'),
+    'base_css': Bundle(
+        'css/base.css',
+        'bower_components/bootstrap/dist/css/bootstrap.css',
+        output='gen/base.css'
+    ),
 
     # all the JS for our single-page application
-    'main_js': Bundle('js/hello.js', output='gen/main.js'),
+    'main_js': Bundle(
+        'bower_components/jquery/dist/jquery.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-sanitize/angular-sanitize.js',
+        'bower_components/angular-animate/angular-animate.js',
+        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+        'bower_components/angular-ui-sortable/sortable.js',
+        'bower_components/jquery-ui/jquery-ui.js',
+
+        'js/app.js',
+        'js/tasks.js',
+        output='gen/main.js'
+    ),
 }
 
 for ast, bun in a_s.items():
@@ -52,5 +69,24 @@ for ast, bun in a_s.items():
 
 
 @app.route('/')
-def hello_world():
-    return render_template('base.html')
+def instructions():
+    return render_template('instructions.html')
+
+
+@app.route('/tasks')
+def manage_tasks():
+    return render_template('manage_tasks.html')
+
+
+@app.route('/api/tasks/')
+def get_tasks():
+    db = get_db()
+    cur = db.execute("""
+        select id,
+               name,
+               description,
+               created_at,
+               updated_at
+          from tasks
+    """)
+    return json.jsonify(tasks=[dict(row) for row in cur])

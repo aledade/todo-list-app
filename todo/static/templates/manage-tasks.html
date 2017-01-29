@@ -1,0 +1,22 @@
+<div ng-show="tasks.length">
+  <ul class="list-group" ui-sortable="sortableOptions" ng-model="tasks">
+    <li class="list-group-item clearfix" ng-repeat="task in tasks">
+      <div>
+        <span ng-bind="'#' + ($index + 1)"></span>
+        <label ng-bind="task.name"></label>
+        <button
+          class="btn btn-default btn-xs"
+          ng-click="showDescription = !showDescription"
+          ng-bind="(showDescription ? 'hide' : 'show') + ' description'"
+          >
+        </button>
+        <button type="button" class="btn btn-sm btn-danger pull-right" ng-click="deleteTask(task, $index)" disabled>Delete</button>
+      </div>
+      <div ng-show="showDescription">
+        <hr>
+        <div ng-bind-html="task.description">
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
