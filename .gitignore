@@ -1,3 +1,6 @@
 /.eggs
 /todo_env
 *.db
+/todo/static/gen/
+/todo/static/.webassets-cache/
+bower_components

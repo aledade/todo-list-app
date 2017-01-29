@@ -2,6 +2,7 @@ from sqlite3 import dbapi2 as sqlite3
 import os
 
 from flask import Flask, g, render_template
+from flask_assets import Environment, Bundle
 
 
 app = Flask(__name__)
@@ -35,6 +36,19 @@ def close_db(error):
     """ Closes the database again at the end of the request. """
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
+
+
+# set up asset management
+assets = Environment(app)
+a_s = {
+    'base_css': Bundle('css/base.css', output='gen/base.css'),
+
+    # all the JS for our single-page application
+    'main_js': Bundle('js/hello.js', output='gen/main.js'),
+}
+
+for ast, bun in a_s.items():
+    assets.register(ast, bun)
 
 
 @app.route('/')

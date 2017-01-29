@@ -1,0 +1,10 @@
+{
+  "name": "todo",
+  "authors": [
+    "David Cain <dcain@aledade.com>"
+  ],
+  "description": "A simple Angular-based 'TODO' application",
+  "dependencies": {
+    "angular": ">=1.5.0"
+  }
+}
