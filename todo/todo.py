@@ -78,6 +78,20 @@ def manage_tasks():
     return render_template('manage_tasks.html')
 
 
+@app.route('/tasks/<int:task_id>')
+def view_task(task_id):
+    db = get_db()
+    cur = db.execute("""
+        select id,
+               name,
+               description
+          from tasks
+         where id = :task_id
+    """, {'task_id': task_id})
+    row = cur.fetchone()
+    return render_template('view_task.html', **row)
+
+
 @app.route('/api/tasks/')
 def get_tasks():
     db = get_db()
