@@ -4,7 +4,7 @@ angular.module('todo.tasks', ['ui.sortable'])
   var ts = this;
 
   ts.getTasks = function() {
-    return $http.get('/api/tasks');
+    return $http.get('/api/tasks/');
   };
 }])
 
